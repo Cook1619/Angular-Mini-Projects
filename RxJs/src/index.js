@@ -1,26 +1,20 @@
-import {Observable} from "rxjs";
+import {timer, fromEvent, of, from} from "rxjs";
 
-const obs = new Observable(subscriber => {
-    const id = setInterval(() => {
-        subscriber.next("testing")
-    }, 1000)
-    return () => {
-        clearInterval(id)
-    }
-})
+// Example of the different operators by rxjs
 
-const subs = obs.subscribe({
-    next: (value) => {
+// const observable = timer(0,1000);
+
+// const observable = fromEvent(document, 'click');
+
+// const observable = of([1,2,3,4,5]);
+// From is better with complex objects
+const observable = from(fetch('https://jsonplaceholder.typicode.com/todos/1'));
+
+const subs = observable.subscribe({
+    next(value){
         console.log(value)
     },
-    complete: () => {
-        console.log('complete called')
-    },
-    error: (err) => {
-        console.error(err)
+    complete(){
+        console.log('complete')
     }
 })
-
-setTimeout(()=> {
-    subs.unsubscribe()
-}, 4000)
