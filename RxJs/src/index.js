@@ -1,14 +1,15 @@
 import {Observable} from "rxjs";
 
 const obs = new Observable(subscriber => {
-    subscriber.next('Hello world')
-    subscriber.error('Error!!!!')
-    subscriber.next("test")
-
-    subscriber.complete()
+    const id = setInterval(() => {
+        subscriber.next("testing")
+    }, 1000)
+    return () => {
+        clearInterval(id)
+    }
 })
 
-obs.subscribe({
+const subs = obs.subscribe({
     next: (value) => {
         console.log(value)
     },
@@ -19,3 +20,7 @@ obs.subscribe({
         console.error(err)
     }
 })
+
+setTimeout(()=> {
+    subs.unsubscribe()
+}, 4000)
