@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styleUrls: ['./servers.component.css']
+  styles: [
+  ]
 })
 export class ServersComponent {
   allowNewServer = false
@@ -14,6 +15,12 @@ export class ServersComponent {
 
   serverCreated = false
   servers = ['TestServer', 'TestServer 2']
+
+
+  counter: number[] = []
+
+  showSecret = false
+
 
   constructor() {
     setTimeout(() => {
@@ -37,5 +44,10 @@ export class ServersComponent {
 
   resetUserName(){
     this.userName = ''
+  }
+
+  increment(){
+    this.showSecret = !this.showSecret
+    this.counter.push(this.counter.length + 1)
   }
 }

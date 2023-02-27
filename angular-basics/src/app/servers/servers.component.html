@@ -15,3 +15,10 @@
 <input type="text " class="form-control" [(ngModel)]="userName">
 <p>{{userName}}</p>
 <button class="btn btn-primary" [disabled]="!userName" (click)="resetUserName()">Reset User Name</button>
+
+<button class="btn btn-primary visible-lg-block" (click)="increment()">Display Details</button>
+<p *ngIf="showSecret">Default Text</p>
+<ul>
+  <li [ngStyle]="{backgroundColor: count >= 5 ? 'blue' : 'transparent', color: count >= 5 ? 'white' : 'black'}" *ngFor="let count of counter">{{count}}</li>
+</ul>
+
