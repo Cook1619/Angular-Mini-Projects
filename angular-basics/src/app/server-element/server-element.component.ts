@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 interface IElement {
   type: string,
@@ -9,9 +9,11 @@ interface IElement {
 @Component({
   selector: 'app-server-element',
   templateUrl: './server-element.component.html',
-  styleUrls: ['./server-element.component.css']
+  styleUrls: ['./server-element.component.css'],
+  // This will make these styles global
+  // encapsulation: ViewEncapsulation.None
 })
 export class ServerElementComponent {
-  @Input() element: IElement = <IElement>{};
+  @Input('srvElement') element: IElement = <IElement>{};
 
 }
