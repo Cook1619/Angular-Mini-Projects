@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+
+interface IElement {
+  type: string,
+  name: string,
+  content: string
+}
 
 @Component({
   selector: 'app-server-element',
@@ -6,5 +12,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./server-element.component.css']
 })
 export class ServerElementComponent {
+  @Input() element: IElement = <IElement>{};
 
 }
