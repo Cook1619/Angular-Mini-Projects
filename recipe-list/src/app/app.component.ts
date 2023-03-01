@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipe-list';
+  selection = 'recipe'
+
+  onHeaderChange(headerData){
+    this.selection = headerData
+  }
+
 }
