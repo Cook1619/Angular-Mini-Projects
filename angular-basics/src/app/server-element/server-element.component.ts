@@ -12,6 +12,6 @@ interface IElement {
   styleUrls: ['./server-element.component.css']
 })
 export class ServerElementComponent {
-  @Input() element: IElement = <IElement>{};
+  @Input('srvElement') element: IElement = <IElement>{};
 
 }
