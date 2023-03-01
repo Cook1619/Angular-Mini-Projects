@@ -9,6 +9,7 @@ export class CockpitComponent {
   @Output() serverCreated = new EventEmitter<{ serverName: string, serverContent: string}>();
   @Output('bpCreated') bluePrintCreated = new EventEmitter<{ serverName: string, serverContent: string}>();
   // This gives us access to the local reference defined in the template
+  // @ts-ignore
   @ViewChild('serverContentInput', {static: false}) serverContentInput: ElementRef;
   // Only needed these for 2 way data binding methods
   // newServerName = '';
