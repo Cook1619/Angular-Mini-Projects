@@ -7,8 +7,11 @@
 <!--    This way place a local ref variable, can be placed on any html element, not the value, but the element as a whole-->
     <label>Server Name</label>
     <input type="text" class="form-control" #serverNameInput>
-    <label>Server Content</label>
-    <input type="text" class="form-control" [(ngModel)]="newServerContent">
+<!--    <label>Server Content</label>-->
+<!--    <input type="text" class="form-control" [(ngModel)]="newServerContent">-->
+<!--    Using the NgChild decorator-->
+        <label>Server Content</label>
+        <input type="text" class="form-control" #serverContentInput>
     <br>
 <!--    <button-->
 <!--      class="btn btn-primary"-->
