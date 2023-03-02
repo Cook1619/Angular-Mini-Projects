@@ -1,37 +1,34 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-servers',
   templateUrl: './servers.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class ServersComponent {
-  allowNewServer = false
-  serverCreationStatus = 'No server was created'
-  serverName = 'Test Server'
+  allowNewServer = false;
+  serverCreationStatus = 'No server was created';
+  serverName = 'Test Server';
 
-  userName = ''
+  userName = '';
 
-  serverCreated = false
-  servers = ['TestServer', 'TestServer 2']
+  serverCreated = false;
+  servers = ['TestServer', 'TestServer 2'];
 
+  counter: number[] = [];
 
-  counter: number[] = []
-
-  showSecret = false
-
+  showSecret = false;
 
   constructor() {
     setTimeout(() => {
-      this.allowNewServer = true
-    }, 3000)
+      this.allowNewServer = true;
+    }, 3000);
   }
 
   onCreateServer() {
-    this.serverCreated = true
-    this.servers.push(this.serverName)
-    this.serverCreationStatus = 'Server was created' + this.serverName
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
+    this.serverCreationStatus = 'Server was created' + this.serverName;
   }
 
   onUpdateServerName(event: Event) {
@@ -42,12 +39,12 @@ export class ServersComponent {
   //   this.userName = (<HTMLInputElement>event.target).value;
   // }
 
-  resetUserName(){
-    this.userName = ''
+  resetUserName() {
+    this.userName = '';
   }
 
-  increment(){
-    this.showSecret = !this.showSecret
-    this.counter.push(this.counter.length + 1)
+  increment() {
+    this.showSecret = !this.showSecret;
+    this.counter.push(this.counter.length + 1);
   }
 }

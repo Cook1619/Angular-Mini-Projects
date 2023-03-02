@@ -1,9 +1,9 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 interface IElement {
-  type: string,
-  name: string,
-  content: string
+  type: string;
+  name: string;
+  content: string;
 }
 
 @Component({
@@ -15,5 +15,4 @@ interface IElement {
 })
 export class ServerElementComponent {
   @Input('srvElement') element: IElement = <IElement>{};
-
 }

@@ -1,1 +1,6 @@
-<h3 [ngClass]="{online: status === 'online'}" [ngStyle]="{backgroundColor: getColor()}">Server ID is: {{ id }} and the status is: {{ status.toUpperCase() }}</h3>
+<h3
+  [ngClass]="{ online: status === 'online' }"
+  [ngStyle]="{ backgroundColor: getColor() }"
+>
+  Server ID is: {{ id }} and the status is: {{ status.toUpperCase() }}
+</h3>
