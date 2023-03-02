@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  aBooleanValue: boolean = true;
   serverElements = [
     { type: 'server', name: 'testserver', content: 'Just a test' },
   ];
