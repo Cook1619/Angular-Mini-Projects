@@ -7,11 +7,7 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent {
-  @Output() showRecipeDetail = new EventEmitter<Recipe>();
-
-  onRecipeSelected(recipe: Recipe) {
-    this.showRecipeDetail.emit(recipe);
-  }
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
   recipes: Recipe[] = [
     new Recipe(
       'Chili',
@@ -24,4 +20,7 @@ export class RecipeListComponent {
       `https://natashaskitchen.com/wp-content/uploads/2020/10/Chicken-Tortilla-Soup-5.jpg`
     ),
   ];
+  onRecipeSelected(recipe: Recipe) {
+    this.recipeWasSelected.emit(recipe);
+  }
 }
