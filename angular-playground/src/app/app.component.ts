@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: ` <div class="app">Hello Angular!</div> `,
+  template: `
+    <div class="app">
+      <h1>{{message}}</h1>
+      <input type="text" [value]="message">
+    </div> `,
   styles: [
     `
       .app {
@@ -15,7 +19,10 @@ import { Component, OnInit } from '@angular/core';
   ],
 })
 export class AppComponent implements OnInit {
+  // The bang lets typescript know that you will assign it outside the scope of the constructor
+  message!: string
+
   ngOnInit() {
-    console.log('Hello World!');
+    this.message = 'Hello World!'
   }
 }
