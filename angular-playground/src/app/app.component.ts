@@ -4,8 +4,8 @@ import {Component, OnInit} from '@angular/core';
   selector: 'app-root',
   template: `
     <div class="app">
-      <h1>{{message}}</h1>
-      <input type="text" [value]="message">
+      <h1 (click)="handleClick($event)">{{newMessage}}</h1>
+      <input type="text" [value]="message" (input)="handleInput($event)">
     </div> `,
   styles: [
     `
@@ -20,9 +20,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   // The bang lets typescript know that you will assign it outside the scope of the constructor
-  message!: string
+  message!: string;
+  newMessage: string = '';
 
   ngOnInit() {
     this.message = 'Hello World!'
+  }
+
+  handleClick(event: Event){
+    console.log(event);
+  }
+
+  handleInput(event: Event){
+    const {value} = event.target as HTMLInputElement;
+    this.newMessage = value;
+    console.log(value)
   }
 }
