@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DonutListComponent } from './containers/donut-list/donut-list.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DonutListComponent
+  ],
+  exports: [
+    DonutListComponent
+  ],
   imports: [
     CommonModule
   ]
