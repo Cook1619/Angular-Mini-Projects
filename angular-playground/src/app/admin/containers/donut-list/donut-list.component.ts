@@ -5,10 +5,7 @@ import {Donut} from "../../models/donut.model";
   selector: 'app-donut-list',
   template: `
     <div>
-      <div>
-        {{donut.name}}
-        {{donut.price}}
-      </div>
+        <donut-card></donut-card>
     </div>
   `,
   styles: [
@@ -41,6 +38,6 @@ export class DonutListComponent implements OnInit {
         description: 'Chocolate with caramel swirl'
       }
     ]
-    this.donut = this.donuts[0];
+    this.donut = this.donuts[1];
   }
 }
