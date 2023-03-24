@@ -1,21 +1,19 @@
 import {Component, OnInit} from '@angular/core';
+import {Donut} from "../../models/donut.model";
 
 @Component({
   selector: 'app-donut-list',
   template: `
     <div>
-      <div>
-        {{donut.name}}
-        {{donut.price}}
-      </div>
+        <donut-card></donut-card>
     </div>
   `,
   styles: [
   ]
 })
 export class DonutListComponent implements OnInit {
-  donut!: any;
-  donuts!: any[];
+  donut!: Donut;
+  donuts!: Donut[];
   ngOnInit(): void {
     this.donuts = [
       {
@@ -40,6 +38,6 @@ export class DonutListComponent implements OnInit {
         description: 'Chocolate with caramel swirl'
       }
     ]
-    this.donut = this.donuts[0];
+    this.donut = this.donuts[1];
   }
 }
