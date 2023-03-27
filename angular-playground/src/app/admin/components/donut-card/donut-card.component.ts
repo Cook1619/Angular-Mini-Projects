@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Donut} from "../../models/donut.model";
 
 @Component({
-  selector: 'app-donut-card',
+  selector: 'donut-card',
   template: `
     <div class="donut-card">
       <img src="/assets/img/{{ donut.icon }}.svg" [alt]="donut.name" class="donut-card-icon">
@@ -19,5 +20,5 @@ import { Component } from '@angular/core';
   ]
 })
 export class DonutCardComponent {
-
+  @Input() donut!: Donut;
 }
