@@ -5,7 +5,9 @@ import {Donut} from "../../models/donut.model";
   selector: 'app-donut-list',
   template: `
     <div>
-        <donut-card></donut-card>
+      <donut-card [donut]="donuts[0]"></donut-card>
+      <donut-card [donut]="donuts[1]"></donut-card>
+      <donut-card [donut]="donuts[2]"></donut-card>
     </div>
   `,
   styles: [
