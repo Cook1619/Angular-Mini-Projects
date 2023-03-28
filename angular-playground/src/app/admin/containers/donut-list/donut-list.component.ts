@@ -10,12 +10,12 @@ import {Donut} from "../../models/donut.model";
       <donut-card [donut]="donuts[2]"></donut-card>
     </div>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class DonutListComponent implements OnInit {
   donut!: Donut;
   donuts!: Donut[];
+
   ngOnInit(): void {
     this.donuts = [
       {
