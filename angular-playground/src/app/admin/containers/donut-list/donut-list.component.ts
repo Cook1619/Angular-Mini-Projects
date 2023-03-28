@@ -10,12 +10,12 @@ import {Donut} from "../../models/donut.model";
       <donut-card [donut]="donuts[2]"></donut-card>
     </div>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class DonutListComponent implements OnInit {
   donut!: Donut;
   donuts!: Donut[];
+
   ngOnInit(): void {
     this.donuts = [
       {
@@ -23,14 +23,15 @@ export class DonutListComponent implements OnInit {
         name: 'Chocolate',
         icon: 'just-chocolate',
         price: 119,
-        description: 'For chocolate lovers'
+        description: 'For chocolate lovers',
+        promo: true
       },
       {
         id: 'adsd234',
         name: 'Glazed Fudge',
         icon: 'glazed-fudge',
         price: 129,
-        description: 'Perfect for all'
+        description: 'Perfect for all',
       },
       {
         id: 'as1456hgf4',
