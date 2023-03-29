@@ -6,7 +6,10 @@ import {Donut} from "../../models/donut.model";
   template: `
     <div
       class="donut-card"
-      [class.donut-card-promo]="donut.promo">
+      [ngClass]="{
+      'donut-card-promo': donut.promo,
+      'donut-card-not-promo': !donut.promo
+      }">
       <img src="/assets/img/{{ donut.icon }}.svg" [alt]="donut.name" class="donut-card-icon">
       <div>
         <p class="donut-card-name">
