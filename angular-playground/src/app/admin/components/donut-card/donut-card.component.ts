@@ -7,8 +7,7 @@ import {Donut} from "../../models/donut.model";
     <div
       class="donut-card"
       [ngClass]="{
-      'donut-card-promo': donut.promo,
-      'donut-card-not-promo': !donut.promo
+      'donut-card-promo': donut.promo
       }">
       <img src="/assets/img/{{ donut.icon }}.svg" [alt]="donut.name" class="donut-card-icon">
       <div>
@@ -16,7 +15,7 @@ import {Donut} from "../../models/donut.model";
           {{donut.name}}
         </p>
         <p class="donut-card-price">
-          {{donut.price}}
+          {{donut.price / 100 | currency}}
         </p>
       </div>
     </div>
