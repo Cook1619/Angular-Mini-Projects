@@ -6,7 +6,7 @@ import {Donut} from "../../models/donut.model";
   template: `
     <div
       class="donut-card"
-      [ngStyle]="{border: donut.promo ? '2px solid #eee' : 'none'}">
+      [class.donut-card-promo]="donut.promo">
       <img src="/assets/img/{{ donut.icon }}.svg" [alt]="donut.name" class="donut-card-icon">
       <div>
         <p class="donut-card-name">
@@ -30,6 +30,10 @@ import {Donut} from "../../models/donut.model";
 
       &:hover {
         transform: translateY(-3px);
+      }
+
+      &-promo {
+       border:2px solid #eee;
       }
 
       &-name {
