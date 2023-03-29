@@ -1,13 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {Donut} from "../../models/donut.model";
 
+// the else noDonuts creates a reference variable to tell angular if there are no donuts render 'noDonuts'
+// 'noDonuts' is now using that reference variable in a ng-template
 @Component({
   selector: 'app-donut-list',
   template: `
     <div>
-      <donut-card [donut]="donuts[0]"></donut-card>
-      <donut-card [donut]="donuts[1]"></donut-card>
-      <donut-card [donut]="donuts[2]"></donut-card>
+      <ng-container *ngIf="donuts.length; else noDonuts">
+        <donut-card
+          *ngFor="let donut of donuts; trackBy: trackById"
+          [donut]="donut">
+        </donut-card>
+      </ng-container>
+
+      <ng-template #noDonuts>
+        <p>No Donuts here ....</p>
+      </ng-template>
     </div>
   `,
   styles: []
@@ -40,5 +49,11 @@ export class DonutListComponent implements OnInit {
         description: 'Chocolate with caramel swirl'
       }
     ]
+  }
+
+  trackById(index: number, value: Donut){
+    console.log('index', index);
+    console.log('value', value);
+    return value.id
   }
 }
