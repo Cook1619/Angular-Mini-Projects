@@ -13,7 +13,6 @@ import {Donut} from "../../models/donut.model";
   styles: []
 })
 export class DonutListComponent implements OnInit {
-  donut!: Donut;
   donuts!: Donut[];
 
   ngOnInit(): void {
@@ -41,6 +40,5 @@ export class DonutListComponent implements OnInit {
         description: 'Chocolate with caramel swirl'
       }
     ]
-    this.donut = this.donuts[1];
   }
 }
