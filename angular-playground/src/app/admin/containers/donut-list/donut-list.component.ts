@@ -7,11 +7,13 @@ import {Donut} from "../../models/donut.model";
   selector: 'app-donut-list',
   template: `
     <div>
-      <ng-container *ngIf="donuts.length; else noDonuts">
+      <ng-container *ngIf="donuts.length; then cards; else noDonuts">
+      </ng-container>
+      <ng-template #cards>
         <donut-card [donut]="donuts[0]"></donut-card>
         <donut-card [donut]="donuts[1]"></donut-card>
         <donut-card [donut]="donuts[2]"></donut-card>
-      </ng-container>
+      </ng-template>
 
       <ng-template #noDonuts>
         <p>No Donuts here ....</p>
