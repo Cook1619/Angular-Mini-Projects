@@ -12,15 +12,7 @@ import {Donut} from "../../models/donut.model";
           *ngFor="let donut of donuts; trackBy: trackById"
           [donut]="donut">
         </donut-card>
-<!--        the above syntax translates to this, the advantage is the variables you create in the ng-template-->
-<!--        can be used anywhere within the ng-template, in the previous commit those variables are scoped to-->
-<!--        the donut-card itself-->
-        <ng-template ngFor [ngForOf]="donuts" let-donut let-i="index">
-          <donut-card
-            [donut]="donut">
-          </donut-card>
-          {{ i }}
-        </ng-template>
+
       </ng-container>
 
       <ng-template #noDonuts>
@@ -41,7 +33,7 @@ export class DonutListComponent implements OnInit {
         icon: 'just-chocolate',
         price: 119,
         description: 'For chocolate lovers',
-        promo: true
+        promo: 'new'
       },
       {
         id: 'adsd234',
@@ -49,13 +41,30 @@ export class DonutListComponent implements OnInit {
         icon: 'glazed-fudge',
         price: 129,
         description: 'Perfect for all',
+        promo: 'limited'
       },
       {
         id: 'as1456hgf4',
         name: 'Caramel Swirl',
         icon: 'caramel-swirl',
         price: 129,
-        description: 'Chocolate with caramel swirl'
+        description: 'Chocolate with caramel swirl',
+      },
+      {
+        id: 'as14dd245',
+        name: 'Sour Supreme',
+        icon: 'sour-supreme',
+        price: 139,
+        description: 'For the sour lovers',
+        promo: 'limited'
+      },
+      {
+        id: 'as6775dd245',
+        name: 'Zesty Lemon',
+        icon: 'zesty-lemon',
+        price: 139,
+        description: 'Delicious lemon donut',
+        promo: 'new'
       }
     ]
   }
