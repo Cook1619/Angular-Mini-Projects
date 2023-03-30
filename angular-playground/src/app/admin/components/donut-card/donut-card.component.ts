@@ -13,10 +13,16 @@ import {Donut} from "../../models/donut.model";
       <div>
         <p class="donut-card-name">
           {{donut.name}}
+<!--          Both of this approaches achieve the same result-->
           <ng-container [ngSwitch]="donut.promo">
-            <span *ngSwitchCase="'new'" class="donut-card-label">NEW</span>
-            <span *ngSwitchCase="'limited'" class="donut-card-label">LIMITED</span>
-            <span *ngSwitchDefault class="donut-card-label">Nothing special.....</span>
+            <span class="donut-card-label">
+              <ng-template [ngSwitchCase]="'new'">NEW</ng-template>
+              <ng-template [ngSwitchCase]="'limited'">LIMITED</ng-template>
+              <ng-template ngSwitchDefault>Nothing special....</ng-template>
+            </span>
+<!--            <span *ngSwitchCase="'new'" class="donut-card-label">NEW</span>-->
+<!--            <span *ngSwitchCase="'limited'" class="donut-card-label">LIMITED</span>-->
+<!--            <span *ngSwitchDefault class="donut-card-label">Nothing special.....</span>-->
           </ng-container>
 
         </p>
