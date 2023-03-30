@@ -12,6 +12,18 @@ import {Donut} from "../../models/donut.model";
           *ngFor="let donut of donuts; trackBy: trackById"
           [donut]="donut">
         </donut-card>
+        <div
+          *ngFor="let donut of donuts;
+          trackBy: trackById;
+          index as i;
+          odd as o;
+          even as e;"
+          [style.color]="o ? 'red': 'blue'"
+        >
+          {{i + 1}}
+          {{o}}
+          {{e}}
+        </div>
       </ng-container>
 
       <ng-template #noDonuts>
@@ -52,8 +64,6 @@ export class DonutListComponent implements OnInit {
   }
 
   trackById(index: number, value: Donut){
-    console.log('index', index);
-    console.log('value', value);
     return value.id
   }
 }
