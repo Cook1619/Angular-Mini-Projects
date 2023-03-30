@@ -12,18 +12,15 @@ import {Donut} from "../../models/donut.model";
           *ngFor="let donut of donuts; trackBy: trackById"
           [donut]="donut">
         </donut-card>
-        <div
-          *ngFor="let donut of donuts;
-          trackBy: trackById;
-          index as i;
-          odd as o;
-          even as e;"
-          [style.color]="o ? 'red': 'blue'"
-        >
-          {{i + 1}}
-          {{o}}
-          {{e}}
-        </div>
+<!--        the above syntax translates to this, the advantage is the variables you create in the ng-template-->
+<!--        can be used anywhere within the ng-template, in the previous commit those variables are scoped to-->
+<!--        the donut-card itself-->
+        <ng-template ngFor [ngForOf]="donuts" let-donut let-i="index">
+          <donut-card
+            [donut]="donut">
+          </donut-card>
+          {{ i }}
+        </ng-template>
       </ng-container>
 
       <ng-template #noDonuts>
