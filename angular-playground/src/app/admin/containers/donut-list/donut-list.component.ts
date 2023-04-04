@@ -4,7 +4,7 @@ import {Donut} from "../../models/donut.model";
 // the else noDonuts creates a reference variable to tell angular if there are no donuts render 'noDonuts'
 // 'noDonuts' is now using that reference variable in a ng-template
 @Component({
-  selector: 'app-donut-list',
+  selector: 'donut-list',
   template: `
     <div>
       <ng-container *ngIf="donuts.length; else noDonuts">
