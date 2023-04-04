@@ -5,7 +5,7 @@ import { DonutCardComponent } from './components/donut-card/donut-card.component
 import { TestComponentComponent } from './test-component/test-component.component';
 import { DonutSingleComponent } from './containers/donut-single/donut-single.component';
 import { DonutFormComponent } from './components/donut-form/donut-form.component';
-
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -21,7 +21,8 @@ import { DonutFormComponent } from './components/donut-form/donut-form.component
     DonutSingleComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class AdminModule { }
