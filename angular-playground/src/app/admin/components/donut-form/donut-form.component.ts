@@ -8,12 +8,22 @@ import {Component} from '@angular/core';
     <form class="donut-form" #form="ngForm">
       <label>
         <span>Name</span>
-        <input type="text" name="name" class="input" required ngModel #name="ngModel" />
-        {{ name.value }}
-        {{ name.invalid }}
-        {{ name.touched }}
-        {{ name.untouched }}
-        {{ name.dirty }}
+        <input
+          type="text"
+          name="name"
+          class="input"
+          required
+          minlength="5"
+          ngModel
+          #name="ngModel" />
+        <ng-container *ngIf="name.invalid && name.touched">
+          <div class="donut-form-error" *ngIf="name.errors?.minlength">
+            Minimum length of name is 5!
+          </div>
+          <div class="donut-form-error" *ngIf="name.errors?.required">
+            Name is required.
+          </div>
+        </ng-container>
       </label>
 
       <label>
@@ -78,6 +88,10 @@ import {Component} from '@angular/core';
               margin-bottom: 0;
             }
           }
+        }
+        &-error {
+          font-size: 12px;
+          color: #e66262;
         }
       }
     `
