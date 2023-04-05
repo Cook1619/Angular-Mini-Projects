@@ -1,14 +1,30 @@
 import {Component} from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'donut-form',
   template: `
 <!-- Registers our form as a angular form-->
 <!-- Creating an #form=ngModel helps keep track of whatever you add the ngModel to a creates an object for us-->
-    <form class="donut-form" #form="ngForm">
+    <form class="donut-form" (ngSubmit)="handleSubmit(form)" #form="ngForm">
       <label>
         <span>Name</span>
-        <input type="text" name="name" class="input" required ngModel />
+        <input
+          type="text"
+          name="name"
+          class="input"
+          required
+          minlength="5"
+          ngModel
+          #name="ngModel" />
+        <ng-container *ngIf="name.invalid && name.touched">
+          <div class="donut-form-error" *ngIf="name.errors?.minlength">
+            Minimum length of name is 5!
+          </div>
+          <div class="donut-form-error" *ngIf="name.errors?.required">
+            Name is required.
+          </div>
+        </ng-container>
       </label>
 
       <label>
@@ -52,7 +68,7 @@ import {Component} from '@angular/core';
           ngModel>
         </textarea>
       </label>
-
+      <button class="btn btn--green" type="submit">Create</button>
       <pre>{{ form.value | json }}</pre>
     </form>
   `,
@@ -74,6 +90,10 @@ import {Component} from '@angular/core';
             }
           }
         }
+        &-error {
+          font-size: 12px;
+          color: #e66262;
+        }
       }
     `
   ]
@@ -88,4 +108,8 @@ export class DonutFormComponent {
     'vanilla-sundae',
     'zesty-lemon'
   ];
+
+  handleSubmit(form: NgForm) {
+    console.log('form', form.value);
+  }
 }
