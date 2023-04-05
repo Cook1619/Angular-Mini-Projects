@@ -8,7 +8,12 @@ import {Component} from '@angular/core';
     <form class="donut-form" #form="ngForm">
       <label>
         <span>Name</span>
-        <input type="text" name="name" class="input" required ngModel />
+        <input type="text" name="name" class="input" required ngModel #name="ngModel" />
+        {{ name.value }}
+        {{ name.invalid }}
+        {{ name.touched }}
+        {{ name.untouched }}
+        {{ name.dirty }}
       </label>
 
       <label>
