@@ -10,10 +10,22 @@ import {Component} from '@angular/core';
         <span>Name</span>
         <input type="text" name="name" class="input" ngModel />
       </label>
+
+      <label>
+        <span>Icon</span>
+        <select name="icon" class="input input--select" ngModel>
+<!-- use ngValue instead of value because its not limited by data types-->
+          <option *ngFor="let icon of icons" [ngValue]="icon">
+            {{ icon }}
+          </option>
+        </select>
+      </label>
+
       <label>
         <span>Price</span>
         <input type="number" name="price" class="input" ngModel />
       </label>
+
       <div class="donut-form-radios">
         <p class="donut-form-radios-label">Promo:</p>
         <label>
@@ -56,5 +68,13 @@ import {Component} from '@angular/core';
   ]
 })
 export class DonutFormComponent {
-
+  icons: string[] = [
+    'caramel-swirl',
+    'glazed-fudge',
+    'just-chocolate',
+    'sour-supreme',
+    'strawberry-glaze',
+    'vanilla-sundae',
+    'zesty-lemon'
+  ];
 }
