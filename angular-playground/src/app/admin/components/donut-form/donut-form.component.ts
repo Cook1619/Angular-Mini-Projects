@@ -95,6 +95,9 @@ import { NgForm } from '@angular/forms';
         </ng-container>
       </label>
       <button type="submit" class="btn btn--green">Create</button>
+<!-- We can use resetForm to pass a callback to set values back to initial state if needed-->
+      <button type="button" class="btn btn--grey" (click)="form.resetForm({name: 'Initial state'})">Reset Form</button>
+      {{ form.submitted }}
       <pre>{{ form.value | json }}</pre>
     </form>
   `,
