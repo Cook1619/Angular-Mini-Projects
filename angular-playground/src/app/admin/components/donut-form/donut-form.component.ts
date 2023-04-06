@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NgForm} from "@angular/forms";
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'donut-form',
@@ -16,21 +16,27 @@ import {NgForm} from "@angular/forms";
           required
           minlength="5"
           ngModel
-          #name="ngModel"/>
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          #name="ngModel"
+        />
         <ng-container *ngIf="name.invalid && name.touched">
           <div class="donut-form-error" *ngIf="name.errors?.minlength">
-            Minimum length of name is 5!
+            Minimum length of a name is 5!
           </div>
           <div class="donut-form-error" *ngIf="name.errors?.required">
             Name is required.
           </div>
         </ng-container>
       </label>
-
       <label>
         <span>Icon</span>
-        <select name="icon" class="input input--select" required ngModel #icon="ngModel">
-          <!-- use ngValue instead of value because its not limited by data types-->
+        <select
+          name="icon"
+          class="input input--select"
+          required
+          ngModel
+          #icon="ngModel"
+        >
           <option *ngFor="let icon of icons" [ngValue]="icon">
             {{ icon }}
           </option>
@@ -41,46 +47,38 @@ import {NgForm} from "@angular/forms";
           </div>
         </ng-container>
       </label>
-
       <label>
         <span>Price</span>
-        <input type="number" name="price" class="input" required ngModel #price="ngModel"/>
+        <input
+          type="number"
+          name="price"
+          class="input"
+          required
+          ngModel
+          #price="ngModel"
+        />
         <ng-container *ngIf="price.invalid && price.touched">
           <div class="donut-form-error" *ngIf="price.errors?.required">
-            Icon is required.
+            Price is required.
           </div>
         </ng-container>
       </label>
-
       <div class="donut-form-radios">
         <p class="donut-form-radios-label">Promo:</p>
+        <!-- use ngValue instead of value because its not limited by data types-->
         <label>
-          <!-- this removes the property altogether when we set it undefined, which is what we want because that field only takes new or limited string values-->
-          <input
-            type="radio"
-            name="promo"
-            [value]="undefined"
-            ngModel/>
+          <input type="radio" name="promo" [value]="undefined" ngModel />
           <span>None</span>
         </label>
         <label>
-          <input
-            type="radio"
-            name="promo"
-            value="new"
-            ngModel/>
+          <input type="radio" name="promo" value="new" ngModel />
           <span>New</span>
         </label>
         <label>
-          <input
-            type="radio"
-            name="promo"
-            value="limited"
-            ngModel/>
+          <input type="radio" name="promo" value="limited" ngModel />
           <span>Limited</span>
         </label>
       </div>
-
       <label>
         <span>Description</span>
         <textarea
@@ -89,19 +87,19 @@ import {NgForm} from "@angular/forms";
           required
           ngModel
           #description="ngModel"
-        >
-        </textarea>
+        ></textarea>
         <ng-container *ngIf="description.invalid && description.touched">
           <div class="donut-form-error" *ngIf="description.errors?.required">
-            Icon is required.
+            Description is required.
           </div>
         </ng-container>
       </label>
-      <button
-        type="submit"
-        class="btn btn--green">
-        Create
-      </button>
+      <button type="submit" class="btn btn--green">Create</button>
+<!-- We can use resetForm to pass a callback to set values back to initial state if needed-->
+      <button type="button" class="btn btn--grey" (click)="form.resetForm({name: 'Initial state'})">Reset Form</button>
+      <div class="donut-form-working" *ngIf="form.valid && form.submitted">
+        Working...
+      </div>
       <pre>{{ form.value | json }}</pre>
     </form>
   `,
@@ -111,29 +109,30 @@ import {NgForm} from "@angular/forms";
         &-radios {
           display: flex;
           align-content: center;
-
           &-label {
             margin-right: 10px;
           }
-
           label {
             display: flex;
             align-items: center;
-
             span {
               color: #444;
               margin-bottom: 0;
             }
           }
         }
-
+        &-working {
+          font-size: 12px;
+          font-style: italic;
+          margin: 10px 0;
+        }
         &-error {
           font-size: 12px;
           color: #e66262;
         }
       }
-    `
-  ]
+    `,
+  ],
 })
 export class DonutFormComponent {
   icons: string[] = [
@@ -143,16 +142,14 @@ export class DonutFormComponent {
     'sour-supreme',
     'strawberry-glaze',
     'vanilla-sundae',
-    'zesty-lemon'
+    'zesty-lemon',
   ];
 
   handleSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('form', form.value);
-    }
-    else {
-      form.form.markAsTouched();
-      console.log('invalid')
+      console.log(form.value);
+    } else {
+      form.form.markAllAsTouched();
     }
   }
 }
