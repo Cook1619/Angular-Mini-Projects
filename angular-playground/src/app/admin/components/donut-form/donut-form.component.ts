@@ -97,7 +97,9 @@ import { NgForm } from '@angular/forms';
       <button type="submit" class="btn btn--green">Create</button>
 <!-- We can use resetForm to pass a callback to set values back to initial state if needed-->
       <button type="button" class="btn btn--grey" (click)="form.resetForm({name: 'Initial state'})">Reset Form</button>
-      {{ form.submitted }}
+      <div class="donut-form-working" *ngIf="form.valid && form.submitted">
+        Working...
+      </div>
       <pre>{{ form.value | json }}</pre>
     </form>
   `,
@@ -118,6 +120,11 @@ import { NgForm } from '@angular/forms';
               margin-bottom: 0;
             }
           }
+        }
+        &-working {
+          font-size: 12px;
+          font-style: italic;
+          margin: 10px 0;
         }
         &-error {
           font-size: 12px;
