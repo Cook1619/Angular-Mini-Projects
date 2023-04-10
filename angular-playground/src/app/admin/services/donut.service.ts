@@ -7,7 +7,7 @@ import { Donut } from "../models/donut.model";
   providedIn: 'root'
 })
 export class DonutService {
-  donuts: Donut[] = [
+  private donuts: Donut[] = [
     {
       id: 'as1234',
       name: 'Chocolate',
@@ -49,4 +49,12 @@ export class DonutService {
     }
   ]
   constructor() { }
+
+  findAll(){
+    return this.donuts;
+  }
+
+  findById(id: string){
+    return this.donuts.find((donut: Donut) => donut.id === id) || {name: '', icon: '', price: 0, description: '' };
+  }
 }
