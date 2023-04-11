@@ -14,6 +14,7 @@ import {Donut} from "../../models/donut.model";
         <p class="donut-card-name">
           {{donut.name}}
 <!--          Both of this approaches achieve the same result-->
+          <p>test</p>
           <ng-container [ngSwitch]="donut.promo">
             <span class="donut-card-label">
               <ng-template [ngSwitchCase]="'new'">NEW</ng-template>
