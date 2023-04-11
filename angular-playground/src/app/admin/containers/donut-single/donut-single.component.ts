@@ -1,28 +1,35 @@
-import {Component, OnInit} from '@angular/core';
-import {Donut} from "../../models/donut.model";
-import {DonutService} from "../../services/donut.service";
+import { Component, OnInit } from '@angular/core';
+import { Donut } from '../../models/donut.model';
+import { DonutService } from '../../services/donut.service';
 
 @Component({
   selector: 'donut-single',
   template: `
     <div>
-      <donut-form [donut]="donut" (create)="onCreate($event)"></donut-form>
+      <donut-form
+        [donut]="donut"
+        (create)="onCreate($event)"
+        (update)="onUpdate($event)"
+      ></donut-form>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class DonutSingleComponent implements OnInit {
   donut!: Donut;
 
-  constructor(private donutService: DonutService) {
-  }
+  constructor(private donutService: DonutService) {}
 
   ngOnInit() {
-    const id = 'adsd234';
+    const id = 'as14dd245';
     this.donut = this.donutService.findById(id);
   }
 
   onCreate(donut: Donut) {
-    console.log('donut', donut)
+    this.donutService.create(donut);
+  }
+
+  onUpdate(donut: Donut) {
+    this.donutService.update(donut);
   }
 }
