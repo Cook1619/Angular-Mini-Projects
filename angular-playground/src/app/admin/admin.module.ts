@@ -5,8 +5,8 @@ import { DonutCardComponent } from './components/donut-card/donut-card.component
 import { TestComponentComponent } from './test-component/test-component.component';
 import { DonutSingleComponent } from './containers/donut-single/donut-single.component';
 import { DonutFormComponent } from './components/donut-form/donut-form.component';
-import { FormsModule } from "@angular/forms";
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,15 +14,9 @@ import { FormsModule } from "@angular/forms";
     DonutCardComponent,
     TestComponentComponent,
     DonutSingleComponent,
-    DonutFormComponent
+    DonutFormComponent,
   ],
-  exports: [
-    DonutListComponent,
-    DonutSingleComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule
-  ]
+  exports: [DonutListComponent, DonutSingleComponent],
+  imports: [CommonModule, FormsModule, HttpClientModule],
 })
-export class AdminModule { }
+export class AdminModule {}
