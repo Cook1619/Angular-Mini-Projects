@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Donut } from "../models/donut.model";
+import { Donut } from '../models/donut.model';
 
 // @ Injectable makes it available in angular DI system
 // By using 'root' we then don't need to put it in a providers array to tell angular it's available to use in that module
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DonutService {
   private donuts: Donut[] = [
@@ -14,7 +14,7 @@ export class DonutService {
       icon: 'just-chocolate',
       price: 119,
       description: 'For chocolate lovers',
-      promo: 'new'
+      promo: 'new',
     },
     {
       id: 'adsd234',
@@ -22,7 +22,7 @@ export class DonutService {
       icon: 'glazed-fudge',
       price: 129,
       description: 'Perfect for all',
-      promo: 'limited'
+      promo: 'limited',
     },
     {
       id: 'as1456hgf4',
@@ -37,7 +37,7 @@ export class DonutService {
       icon: 'sour-supreme',
       price: 139,
       description: 'For the sour lovers',
-      promo: 'limited'
+      promo: 'limited',
     },
     {
       id: 'as6775dd245',
@@ -45,17 +45,25 @@ export class DonutService {
       icon: 'zesty-lemon',
       price: 139,
       description: 'Delicious lemon donut',
-      promo: 'new'
-    }
-  ]
-  constructor() { }
+      promo: 'new',
+    },
+  ];
 
-  findAll(){
+  constructor() {}
+
+  findAll() {
     return this.donuts;
   }
 
-  findById(id: string){
-    return this.donuts.find((donut: Donut) => donut.id === id) || {name: '', icon: '', price: 0, description: '' };
+  findById(id: string) {
+    return (
+      this.donuts.find((donut: Donut) => donut.id === id) || {
+        name: '',
+        icon: '',
+        price: 0,
+        description: '',
+      }
+    );
   }
 
   create(payload: Donut) {
@@ -63,13 +71,18 @@ export class DonutService {
     console.log(this.donuts);
   }
 
-  update(payload: Donut){
+  update(payload: Donut) {
     this.donuts = this.donuts.map((donut: Donut) => {
-      if ( donut.id === payload.id){
+      if (donut.id === payload.id) {
         return payload;
       }
       return donut;
-    })
-    console.log(this.donuts)
+    });
+    console.log(this.donuts);
+  }
+
+  delete(payload: Donut) {
+    this.donuts = this.donuts.filter((donut: Donut) => donut.id !== payload.id);
+    console.log(this.donuts);
   }
 }
