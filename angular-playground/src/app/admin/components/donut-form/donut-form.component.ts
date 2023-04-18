@@ -121,6 +121,9 @@ import { Donut } from '../../models/donut.model';
       >
         Update
       </button>
+      <button type="button" class="btn btn--green" (click)="handleDelete()">
+        Delete
+      </button>
       <!-- We can use resetForm to pass a callback to set values back to initial state if needed-->
       <button
         type="button"
@@ -174,6 +177,7 @@ export class DonutFormComponent {
   @Input() donut!: Donut;
   @Output() create = new EventEmitter<Donut>();
   @Output() update = new EventEmitter<Donut>();
+  @Output() delete = new EventEmitter<Donut>();
   icons: string[] = [
     'caramel-swirl',
     'glazed-fudge',
@@ -197,6 +201,12 @@ export class DonutFormComponent {
       this.update.emit({ id: this.donut.id, ...form.value });
     } else {
       form.form.markAllAsTouched();
+    }
+  }
+
+  handleDelete() {
+    if (confirm(`Really delete ${this.donut.name}`)) {
+      this.delete.emit({ ...this.donut });
     }
   }
 }
