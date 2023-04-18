@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Donut} from "../../models/donut.model";
-import {DonutService} from "../../services/donut.service";
+import { Component, OnInit } from '@angular/core';
+import { Donut } from '../../models/donut.model';
+import { DonutService } from '../../services/donut.service';
 
 // the else noDonuts creates a reference variable to tell angular if there are no donuts render 'noDonuts'
 // 'noDonuts' is now using that reference variable in a ng-template
@@ -11,9 +11,9 @@ import {DonutService} from "../../services/donut.service";
       <ng-container *ngIf="donuts.length; else noDonuts">
         <donut-card
           *ngFor="let donut of donuts; trackBy: trackById"
-          [donut]="donut">
+          [donut]="donut"
+        >
         </donut-card>
-
       </ng-container>
 
       <ng-template #noDonuts>
@@ -21,19 +21,20 @@ import {DonutService} from "../../services/donut.service";
       </ng-template>
     </div>
   `,
-  styles: []
+  styles: [],
 })
 export class DonutListComponent implements OnInit {
   donuts!: Donut[];
 
-  constructor(private donutService: DonutService) {
-  }
+  constructor(private donutService: DonutService) {}
 
   ngOnInit(): void {
-    this.donuts = this.donutService.findAll();
+    this.donutService
+      .findAll()
+      .subscribe((donuts: Donut[]) => (this.donuts = donuts));
   }
 
-  trackById(index: number, value: Donut){
-    return value.id
+  trackById(index: number, value: Donut) {
+    return value.id;
   }
 }
